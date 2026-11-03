@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Hope Harvest Group</title>
+<meta name="description" content="The Hope Harvest Group LLC, Tampa, Florida. Home of Morphora, a plant collection tracker, and JHM Consulting, fractional HR and I-9 compliance services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one steady column with full-width bands; umbrella in ink + harvest gold, each venture gets its own tint band. */
+:root{
+  --bg:#F7F5F0;
+  --fg:#1F2A2E;
+  --muted:#5A6A70;
+  --line:#D9D4C8;
+  --surface:#FFFFFF;
+  --ink:#1F2A2E;
+  --ink-fg:#F7F5F0;
+  --gold:#B8771F;
+  --gold-soft:#F0E2C6;
+  --plum:#5B2E5E;
+  --plum-soft:#EFE3F0;
+  --plum-fg:#3C1C3F;
+  --slate:#1F3E52;
+  --slate-soft:#DFE8EE;
+  --slate-fg:#143040;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15191B; --fg:#ECE8DF; --muted:#A3ADB1; --line:#2E3639; --surface:#1E2427;
+    --ink:#0F1315; --ink-fg:#ECE8DF; --gold:#D9A04E; --gold-soft:#3A2E18;
+    --plum:#C98DCB; --plum-soft:#2A1C2C; --plum-fg:#EADDEB;
+    --slate:#8FB6CF; --slate-soft:#172730; --slate-fg:#DCE8EF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15191B; --fg:#ECE8DF; --muted:#A3ADB1; --line:#2E3639; --surface:#1E2427;
+  --ink:#0F1315; --ink-fg:#ECE8DF; --gold:#D9A04E; --gold-soft:#3A2E18;
+  --plum:#C98DCB; --plum-soft:#2A1C2C; --plum-fg:#EADDEB;
+  --slate:#8FB6CF; --slate-soft:#172730; --slate-fg:#DCE8EF;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-0.01em}
+p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px}
+@media (max-width:640px){.band{padding-block:48px}}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.15rem;max-width:62ch;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:4px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid transparent;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn-solid{background:var(--fg);color:var(--bg)}
+.btn-line{border-color:currentColor;color:inherit;background:transparent}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:1.25rem;font-weight:500}
+.mark{width:28px;height:28px;flex:none}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;font-size:14px;font-weight:500}
+.nav ul a{text-decoration:none;color:var(--muted)}
+.nav ul a:hover{color:var(--fg)}
+@media (max-width:640px){.nav ul{gap:14px;font-size:13px}}
+
+/* hero */
+.hero{background:var(--ink);color:var(--ink-fg);padding-block:96px 88px}
+@media (max-width:640px){.hero{padding-block:64px 56px}}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);max-width:16ch;margin-top:18px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .lede{color:color-mix(in srgb,var(--ink-fg) 72%,transparent);margin-top:22px;font-size:1.2rem}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero .btn-solid{background:var(--gold);color:var(--ink)}
+.hero .btn-line{color:var(--ink-fg)}
+.ventures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:64px;padding-top:40px;border-top:1px solid color-mix(in srgb,var(--ink-fg) 18%,transparent)}
+@media (max-width:640px){.ventures{grid-template-columns:1fr}}
+.venture{display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:inherit}
+.venture .dot{width:12px;height:12px;border-radius:50%;flex:none;margin-top:9px}
+.venture strong{font-family:var(--display);font-size:1.35rem;font-weight:500;display:block}
+.venture span{color:color-mix(in srgb,var(--ink-fg) 65%,transparent);font-size:15px}
+.venture .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:4px}
+
+/* section shells */
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:40px;align-items:end}
+@media (max-width:760px){.section-head{grid-template-columns:1fr;gap:16px}}
+.section-head h2{font-size:clamp(2rem,4vw,3rem);margin-top:10px}
+.section-head .lede{margin-top:0}
+
+/* morphora band */
+.morphora{background:var(--plum-soft);color:var(--plum-fg)}
+.morphora .eyebrow{color:var(--plum)}
+.morphora .lede{color:color-mix(in srgb,var(--plum-fg) 78%,transparent)}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:48px}
+@media (max-width:760px){.feature-grid{grid-template-columns:1fr;gap:22px}}
+.feature{min-width:0;border-top:2px solid var(--plum);padding-top:16px}
+.feature h3{font-size:1.3rem;margin-bottom:8px}
+.feature p{font-size:15.5px;color:color-mix(in srgb,currentColor 80%,transparent)}
+.morphora .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px;align-items:center}
+.morphora .btn-solid{background:var(--plum);color:var(--plum-soft)}
+.morphora .note{font-size:14px;color:color-mix(in srgb,var(--plum-fg) 70%,transparent)}
+.specimen{font-family:var(--display);font-style:italic;font-size:1.05rem;opacity:.75}
+
+/* jhm band */
+.jhm{background:var(--bg)}
+.jhm .eyebrow{color:var(--slate)}
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:48px}
+@media (max-width:760px){.services{grid-template-columns:1fr}}
+.service{min-width:0;background:var(--slate-soft);color:var(--slate-fg);padding:28px;border-radius:4px}
+.service h3{font-size:1.4rem;margin-bottom:10px}
+.service p{font-size:15.5px}
+.service ul{margin:14px 0 0;padding-left:18px;font-size:15px;line-height:1.55}
+.service li+li{margin-top:4px}
+.who{margin-top:40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 24px;align-items:baseline;max-width:70ch}
+@media (max-width:640px){.who{grid-template-columns:1fr;gap:4px}}
+.who dt{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.who dd{margin:0;font-size:15.5px}
+@media (max-width:640px){.who dd{margin-bottom:12px}}
+.jhm .cta{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+.jhm .btn-solid{background:var(--slate);color:var(--bg)}
+
+/* about */
+.about{border-top:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;gap:28px}}
+.about h2{font-size:clamp(1.9rem,3.5vw,2.6rem);margin-top:10px}
+.about p+p{margin-top:14px}
+.about .prose{max-width:62ch}
+.creds{list-style:none;margin:0;padding:0;display:grid;gap:14px;align-self:start}
+.creds li{border-left:3px solid var(--gold);padding-left:14px;font-size:15px}
+.creds li b{display:block;font-weight:600}
+.creds li span{color:var(--muted)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--ink-fg)}
+.contact .eyebrow{color:var(--gold)}
+.contact h2{font-size:clamp(1.9rem,3.5vw,2.6rem);margin-top:10px}
+.contact .lede{color:color-mix(in srgb,var(--ink-fg) 72%,transparent)}
+.email{margin-top:28px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.email code{font-family:var(--body);font-size:1.05rem;background:color-mix(in srgb,var(--ink-fg) 10%,transparent);padding:10px 14px;border-radius:4px;user-select:all}
+.email button{font:inherit;font-size:14px;font-weight:600;padding:10px 14px;border-radius:4px;border:1.5px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer}
+.email button:hover{background:var(--gold);color:var(--ink)}
+footer{padding-block:28px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 2 C6 2 2 9 2 14 C2 22 14 26 14 26 C14 26 26 22 26 14 C26 9 22 2 14 2 Z" fill="none" stroke="var(--gold)" stroke-width="2"/><path d="M14 8 V26 M14 14 C10 14 8 11 8 11 M14 18 C18 18 20 15 20 15" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/></svg>
+      The Hope Harvest Group
+    </a>
+    <ul>
+      <li><a href="#morphora">Morphora</a></li>
+      <li><a href="#consulting">JHM Consulting</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">The Hope Harvest Group LLC · Tampa, Florida</p>
+    <h1>We build small, useful things for people who <em>do the work.</em></h1>
+    <p class="lede">The Hope Harvest Group is the home for a family of independent ventures. Each one starts with a real problem we have lived with ourselves, and each one is meant to leave the people who use it better off than it found them.</p>
+    <div class="cta">
+      <a class="btn btn-solid" href="#morphora">Meet Morphora</a>
+      <a class="btn btn-line" href="#consulting">Work with JHM Consulting</a>
+    </div>
+
+    <div class="ventures">
+      <a class="venture" href="#morphora">
+        <span class="dot" style="background:var(--plum)"></span>
+        <div><span class="tag">Product</span><strong>Morphora</strong><span>A plant collection record keeper for serious hobbyists and backyard growers.</span></div>
+      </a>
+      <a class="venture" href="#consulting">
+        <span class="dot" style="background:var(--slate)"></span>
+        <div><span class="tag">Service</span><strong>JHM Consulting</strong><span>Fractional HR leadership and I-9 compliance for small and growing employers.</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band morphora" id="morphora">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Product · Morphora</p>
+        <h2>Every plant gets its own record.</h2>
+      </div>
+      <p class="lede">Morphora is a collection tracker built the way plant people actually think. Not watering schedules and alarms, but a running history: when you last watered, when you last fed, where the plant came from, and how it has changed since. Each accession reads like its own page in a greenhouse ledger.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature">
+        <h3>Days since, not days until</h3>
+        <p>Plant people water when a plant needs it. Morphora logs each observation and shows you how long it has been, so your history builds into something you can actually learn from.</p>
+      </div>
+      <div class="feature">
+        <h3>Sourcing and provenance</h3>
+        <p>Record where each plant came from, what you paid, and which cutting came from which mother. Collections grow by trade and division, and the record follows.</p>
+      </div>
+      <div class="feature">
+        <h3>Mycelium</h3>
+        <p>An opt-in community feed where Morphora growers can share what is rooting, what is blooming, and what is for sale. A network, not a bulletin board.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-solid" href="https://morphora.app">Open Morphora</a>
+      <span class="note">Free to use right now. Works in any browser on your phone or desktop; app-store versions are on the way.</span>
+    </div>
+    <p class="specimen" style="margin-top:28px">Follow along: <a href="https://instagram.com/morphora_plants">@morphora_plants</a> on Instagram and <a href="https://facebook.com/morphoraplants">Morphora</a> on Facebook.</p>
+  </div>
+</section>
+
+<section class="band jhm" id="consulting">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Service · JHM Consulting</p>
+        <h2>Senior HR judgment, sized for a small company.</h2>
+      </div>
+      <p class="lede">JHM Consulting gives growing employers a practiced HR lead without a full-time salary. The work ranges from building an employee handbook from scratch to running clean, defensible I-9 verifications for remote hires. It is grounded in ten years of hands-on HR and operations across regulated industries.</p>
+    </div>
+
+    <div class="services">
+      <div class="service">
+        <h3>Fractional HR</h3>
+        <p>An experienced HR partner on a retainer or per-project basis for companies that have outgrown doing it themselves.</p>
+        <ul>
+          <li>Employee handbooks, policies, and job descriptions</li>
+          <li>Offer letters, onboarding, and new-hire paperwork</li>
+          <li>Compliance reviews and audit readiness</li>
+          <li>Manager coaching and employee relations</li>
+        </ul>
+      </div>
+      <div class="service">
+        <h3>I-9 verification and audits</h3>
+        <p>Form I-9 completion as an authorized representative for remote and hybrid hires, plus audits of your existing files.</p>
+        <ul>
+          <li>Remote I-9 Section 2 verification in the Tampa Bay area</li>
+          <li>Internal I-9 audits with corrections documented properly</li>
+          <li>Process setup for staffing agencies and PEOs</li>
+          <li>Notary services for employment documents</li>
+        </ul>
+      </div>
+    </div>
+
+    <dl class="who">
+      <dt>Best fit</dt><dd>Employers with roughly 10 to 150 people, staffing agencies, PEOs, and remote-first teams with Florida hires.</dd>
+      <dt>Industries</dt><dd>Biotech, healthcare, manufacturing, defense and government contracting, staffing, and nonprofits.</dd>
+      <dt>Engagement</dt><dd>Monthly retainer, fixed-fee projects, or per-verification pricing for I-9 work.</dd>
+    </dl>
+
+    <div class="cta">
+      <a class="btn btn-solid" href="#contact">Request a consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="band about" id="about">
+  <div class="wrap about-grid">
+    <div class="prose">
+      <p class="eyebrow">About</p>
+      <h2>Founded by Jennifer Morris</h2>
+      <p style="margin-top:18px">The Hope Harvest Group is run by Jennifer Morris, an HR and operations professional in Tampa with more than a decade of experience inside organizations that have to get compliance right the first time. She started the company to give her own ideas a serious home: a product she wanted to exist, a consulting practice built on work she already does well, and room for what comes next.</p>
+      <p>The name is a promise about how each venture is judged. If it does not produce something real for the people who use it, it does not belong under this roof.</p>
+    </div>
+    <ul class="creds">
+      <li><b>SHRM-CP</b><span>Certified Professional, Society for Human Resource Management</span></li>
+      <li><b>10+ years in HR and operations</b><span>Biotech, healthcare, manufacturing, defense, government contracting, staffing, nonprofit</span></li>
+      <li><b>HR Tampa member</b><span>Active in the local SHRM chapter</span></li>
+      <li><b>Registered Florida LLC</b><span>The Hope Harvest Group LLC, Tampa, Florida</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Start a conversation.</h2>
+    <p class="lede" style="margin-top:16px">For consulting inquiries, Morphora questions, or partnership ideas, email the group directly. Expect a reply within two business days.</p>
+    <div class="email">
+      <code id="email-text">thehopeharvestgroup@gmail.com</code>
+      <button type="button" id="copy-email">Copy email</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 The Hope Harvest Group LLC · Tampa, Florida</span>
+    <span>Morphora and JHM Consulting are ventures of The Hope Harvest Group LLC.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy-email');
+  var txt=document.getElementById('email-text');
+  if(!btn||!txt)return;
+  btn.addEventListener('click',function(){
+    var done=function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email';},1800);};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(txt);var s=window.getSelection();s.removeAllRanges();s.addRange(r);};
+    try{navigator.clipboard.writeText(txt.textContent).then(done,fallback);}catch(e){fallback();}
+  });
+})();
+</script>
+
+</body>
+</html>
